@@ -12,4 +12,26 @@ function agregarAmigo() {
         return;
     }
 
+    // Añadir el nombre al array de amigos
+    amigos.push(nombre);
+
+    // Actualizar la lista visual de amigos
+    mostrarListaAmigos();
+
+    // Limpiar el campo de entrada
+    inputField.value = "";
 }
+
+// Función para mostrar la lista de amigos en el HTML
+function mostrarListaAmigos() {
+    const listaAmigos = document.getElementById('listaAmigos');
+    listaAmigos.innerHTML = ""; // Limpiar la lista existente
+
+    amigos.forEach((amigo, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${index + 1}. ${amigo}`;
+        li.setAttribute('role', 'listitem'); // Mejorar accesibilidad
+        listaAmigos.appendChild(li);
+    });
+}
+
